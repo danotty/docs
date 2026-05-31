@@ -1,0 +1,85 @@
+---
+title: 'MCP Tool Reference'
+description: 'Complete reference of all 51 SignalArk MCP tools with scope, credit cost, and description'
+---
+
+## Read Operations (`mcp:read`)
+
+| Tool | Credits | Description |
+|------|---------|-------------|
+| `search_signals` | Free | Search market radar signals by text, category, confidence, date range |
+| `get_signal_detail` | Free | Get comprehensive details for a specific signal |
+| `get_recent_high_priority_signals` | Free | Fetch recent signals ranked by combined intent × confidence |
+| `get_top_moving_accounts` | Free | Accounts with highest recent signal volume, filtered by ICP |
+| `get_account_timeline` | Free | Chronological signal + social engagement timeline for an account |
+| `explain_account_priority` | Free | Summary of why an account is prioritized (plays, signals, pipeline) |
+| `get_account_next_actions` | Free | AI-recommended next best actions for an account |
+| `get_content_opportunities` | Free | Content opportunities generated from signals |
+| `get_social_activity` | Free | Social engagement events filtered by platform, warmth, ICP tier |
+| `get_content_engagers` | Free | People who engaged with published content |
+| `get_competitor_social_mentions` | Free | Social mentions and radar signals about a competitor |
+| `get_community_engagement_opportunities` | Free | Warm community engagement opportunities (warmth ≥ 40) |
+| `get_what_worked` | Free | Attribution: signals that led to deals |
+| `enrich_company` | 1 | Company firmographic enrichment by domain (TCA → PDL fallback) |
+| `find_contacts` | 5 | Search for contacts at an account/domain (internal + PDL) |
+| `search_accounts` | Free | Search accounts by name, industry, ICP score, signal count, size |
+| `get_icp_profile` | Free | Retrieve ICP profiles and company profile |
+| `get_active_plays` | Free | Active/suggested GTME plays across accounts |
+| `compare_accounts` | Free | Side-by-side comparison of up to 5 accounts |
+| `get_sequence_status` | Free | Check outreach sequence enrollment status |
+| `get_buying_committee` | Free | Retrieve buying committee for an account |
+| `get_crm_field_mappings` | Free | CRM object mapping statistics (HubSpot or Salesforce) |
+
+## Draft Operations (`mcp:draft`)
+
+| Tool | Credits | Description |
+|------|---------|-------------|
+| `generate_outreach_draft` | 1 | AI-generate outreach email/LinkedIn message for account/contact |
+| `generate_linkedin_draft` | 2 | Generate LinkedIn post from content hook or opportunity |
+| `generate_public_reply` | 1 | Generate interest-first public reply to social engagement |
+| `prepare_crm_note` | Free | Prepare a CRM note for account or signal (no push) |
+| `generate_buying_committee` | 2 | AI-generate buying committee for account |
+| `generate_why_now_brief` | 2 | AI-generate "Why Now" brief with stakeholder angles |
+| `draft_committee_outreach` | 1/member | Personalized outreach for buying committee members |
+
+## Write Operations (`mcp:write`)
+
+| Tool | Credits | Description |
+|------|---------|-------------|
+| `create_content_draft` | 2 | Create and persist content draft from hook |
+| `push_crm_note` | Free | Push note to HubSpot or Salesforce |
+| `tag_account` | Free | Add/remove tags on an account |
+| `add_account_note` | Free | Create internal note on an account |
+| `enroll_in_sequence` | Free | Enroll contact in outreach sequence |
+| `unenroll_from_sequence` | Free | Unenroll contact from sequence |
+| `dismiss_signal` | Free | Dismiss or snooze a signal |
+| `bulk_import_accounts` | Free | Import up to 100 accounts |
+| `update_play_status` | Free | Update GTME play match status |
+| `update_icp_profile` | Free | Update existing ICP profile |
+| `create_icp_profile` | Free | Create new ICP profile |
+| `override_icp_fit_score` | Free | Override ICP score for an account |
+| `update_account_firmographics` | Free | Update firmographic data for an account |
+| `archive_contact` | Free | Archive or permanently delete a contact |
+| `update_sequence_steps` | Free | Update a step in an outreach sequence |
+| `create_sequence` | Free | Create new outreach sequence with steps |
+| `create_custom_signal` | Free | Create custom market radar signal |
+| `trigger_crm_sync` | Free | Trigger CRM sync job (async) |
+| `bulk_push_crm_notes` | Free | Bulk push up to 25 CRM notes |
+| `update_company_profile` | Free | Update workspace company profile |
+| `bulk_tag_accounts` | Free | Bulk tag up to 100 accounts |
+
+## Admin Operations (`mcp:admin`)
+
+| Tool | Credits | Description |
+|------|---------|-------------|
+| `manage_team_members` | Free | Add, remove, or update team member roles |
+
+*Note: Admin tools require the `mcp:admin` scope. Admin role escalation via API is blocked for security.*
+
+## Rate Limits
+
+All MCP tools are rate-limited per workspace. Default: 60 requests/minute for read tools, 30 requests/minute for write tools. Contact support for higher limits.
+
+## Write Confirmation Protocol
+
+All write tools (scope: `mcp:write`) use a confirmation protocol. The first call returns a preview of what will be modified. You must re-call with `confirmed: true` to execute the action.

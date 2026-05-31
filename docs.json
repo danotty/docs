@@ -92,6 +92,20 @@
             ]
           },
           {
+            "group": "MCP Automation",
+            "pages": [
+              "mcp/prompt-database",
+              "mcp/tool-reference",
+              "mcp/workflows-signal-triage",
+              "mcp/workflows-account-ops",
+              "mcp/workflows-icp-scoring",
+              "mcp/workflows-outreach",
+              "mcp/workflows-crm",
+              "mcp/workflows-content",
+              "mcp/workflows-compound"
+            ]
+          },
+          {
             "group": "Settings & Admin",
             "pages": [
               "settings/billing",

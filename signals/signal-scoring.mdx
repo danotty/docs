@@ -1,6 +1,6 @@
 ---
 title: "Signal Scoring & Decay"
-description: "How SignalArk calculates intent and prioritizes your outreach."
+description: "How SignalArk scores signals and prioritizes your outreach."
 ---
 
 Not all signals are created equal. SignalArk uses a sophisticated 5-dimension scoring model to evaluate every detected event, ensuring your sales team focuses on the most actionable opportunities.
@@ -9,7 +9,7 @@ Not all signals are created equal. SignalArk uses a sophisticated 5-dimension sc
 
 Every signal is evaluated against these five criteria:
 
-1. **Intent / Budget Relevance:** Does this signal indicate actual buying intent or budget availability? (e.g., a Series B funding round scores higher than a generic blog post).
+1. **Signal Strength / Budget Relevance:** Does this signal indicate actual buying activity or budget availability? (e.g., a Series B funding round scores higher than a generic blog post).
 2. **Actionability:** Can a sales rep use this signal to craft a compelling outreach message? 
 3. **Freshness:** When did the event happen? Signals lose value over time.
 4. **ICP Fit:** How closely does the associated account match your Ideal Customer Profile?
@@ -19,14 +19,14 @@ Every signal is evaluated against these five criteria:
 
 Based on the composite score (0-100), signals are categorized into priority bands:
 
-- **High Priority (80+):** Imminent buying intent. These trigger GTME plays and Monday 8 prioritization.
+- **High Priority (80+):** Strong buying signals. These trigger GTME plays and Monday 8 prioritization.
 - **Worth Outreach (60-79):** Solid rationale for contact. Good for standard sequence enrollment.
-- **Monitor (40-59):** Weak or early-stage signals. Kept on the radar to see if intent compounds.
+- **Monitor (40-59):** Weak or early-stage signals. Kept on the radar to see if signals compound.
 - **Low Priority (&lt;40):** Filtered out of standard views to reduce noise.
 
 ## Signal Decay
 
-Intent is highly time-sensitive. SignalArk applies an automated decay curve to signal scores based on their source type.
+Signal strength is highly time-sensitive. SignalArk applies an automated decay curve to signal scores based on their source type.
 
 - **Fast Decay (e.g., Website Visit, Social Mention):** Half-life of 3-7 days.
 - **Medium Decay (e.g., Job Posting, Event Attendance):** Half-life of 14-30 days.

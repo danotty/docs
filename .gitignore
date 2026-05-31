@@ -1,0 +1,41 @@
+# Node modules
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Mintlify build output
+.mintlify/
+_mintlify/
+
+# Main codebase folder
+SignalArk AI GTM Foundation/
+
+# PDF files
+*.pdf
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Logs
+logs/
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+.cache/

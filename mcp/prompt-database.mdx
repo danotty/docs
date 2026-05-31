@@ -1,0 +1,74 @@
+---
+title: 'MCP Automation Cookbook'
+description: 'Copy-paste-ready prompts and multi-step workflow recipes for automating GTM workflows via SignalArk MCP'
+---
+
+## Introduction
+
+SignalArk's MCP server exposes 51 tools that AI assistants (Claude, ChatGPT, Cursor, etc.) can call to automate GTM workflows. This cookbook provides ready-to-use prompts organized by workflow category.
+
+## Prerequisites
+
+- An active SignalArk account (Growth tier or above recommended)
+- An MCP API token generated from Settings → Integrations → MCP Server
+- An MCP-compatible AI client configured with the SignalArk server URL
+- Link to the setup guide in Settings
+
+## Scope Reference Table
+
+| Scope | Access Level | Description |
+|---|---|---|
+| `mcp:read` | Read-only | Search signals, view accounts, check status. No side effects. |
+| `mcp:draft` | Read + Draft | Everything in read, plus AI-generated drafts (consumes credits). |
+| `mcp:write` | Read + Draft + Write | Full access: create, update, delete, enroll, push to CRM. |
+| `mcp:admin` | Full + Admin | Includes team management (restricted). |
+
+## Safety — Prompt Tier System
+
+- **🟢 Tier 1 — Read-only**: No side effects. No warnings needed. Safe to run freely. Examples: searching signals, viewing timelines, comparing accounts.
+- **🟡 Tier 2 — Draft/Create**: Creates new data or consumes credits. Each prompt shows the credit cost. Be aware of credit consumption. Examples: generating outreach drafts, creating sequences, enriching companies.
+- **🔴 Tier 3 — Destructive/Bulk-write**: Modifies or deletes existing data, or loops over unbounded sets. Every Tier 3 prompt includes: (a) a ⚠️ DESTRUCTIVE warning, (b) a mandatory dry-run step ("list what you WOULD do, don't execute yet"), (c) an explicit confirmation gate ("wait for my confirmation"). Always review before confirming.
+
+<Warning>
+Tier 3 prompts can permanently modify your data. Always start with a dry-run and confirm before execution. We recommend testing with small batches (N ≤ 10) first.
+</Warning>
+
+## Placeholder Conventions
+
+- **Free-text placeholders** (you provide directly): `[ACCOUNT_NAME]`, `[COMPETITOR_NAME]`, `[INDUSTRY]`, `[TAG_NAME]`, `[EVENT_DESCRIPTION]`
+- **ID placeholders** (must be fetched first): `[SIGNAL_ID]`, `[SEQUENCE_ID]`, `[ACCOUNT_ID]`, `[CONTACT_ID]`, `[ICP_PROFILE_ID]`, `[ENROLLMENT_ID]`
+
+*Note: These are system IDs. Use a read tool (e.g., `search_accounts`, `search_signals`) to find the ID before using it in a write command.*
+
+## Cookbook Index
+
+<CardGroup cols={2}>
+  <Card title="Signal Monitoring & Triage" icon="radar" href="workflows-signal-triage">
+    Workflows for analyzing and processing market signals.
+  </Card>
+  <Card title="Account Discovery & Ops" icon="building" href="workflows-account-ops">
+    Automations for enriching and managing accounts.
+  </Card>
+  <Card title="ICP & Scoring" icon="bullseye" href="workflows-icp-scoring">
+    Recipes for ICP management and fit scoring overrides.
+  </Card>
+  <Card title="Outreach & Sequences" icon="paper-plane" href="workflows-outreach">
+    AI-driven sequences and outreach enrollment.
+  </Card>
+  <Card title="CRM Sync & Integrations" icon="sync" href="workflows-crm">
+    HubSpot/Salesforce pushes and integration mapping.
+  </Card>
+  <Card title="Content & Social" icon="pen-nib" href="workflows-content">
+    Content draft generation and social engagement workflows.
+  </Card>
+  <Card title="Compound Workflows" icon="layer-group" href="workflows-compound">
+    Multi-step, complex GTM automated recipes.
+  </Card>
+  <Card title="Tool Quick Reference" icon="wrench" href="tool-reference">
+    Complete list of all 51 MCP tools and credit costs.
+  </Card>
+</CardGroup>
+
+## Credit Awareness
+
+Prompts that consume credits show a credit badge. Compound workflows show per-step formulas. Monitor your usage in Settings → Billing.

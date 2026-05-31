@@ -1,0 +1,28 @@
+---
+title: 'Multi-Step Compound Workflows'
+description: 'End-to-end workflow recipes that chain multiple MCP tools for complete GTM automation'
+---
+
+These recipes chain multiple MCP tools into complete end-to-end workflows. Each recipe includes a copy-paste prompt, credit formula, prerequisites, and failure handling guidance. We recommend starting with small batches (N ≤ 10) before scaling.
+
+<Warning>
+Compound workflows involve multiple write operations. Agent-driven loops fail mid-run frequently. Always review the failure handling section and start with small batches.
+</Warning>
+
+---
+
+**RECIPE 1: New Account Onboarding Pipeline**
+
+**Use case**: You have a list of target accounts (from a CRM export, event list, or research) and want to import, enrich, and prepare them for outreach in one pass.
+
+**Tools chained**: `bulk_import_accounts` → `enrich_company` → `update_account_firmographics` → `get_account_next_actions` → `create_sequence` → `enroll_in_sequence`
+
+**Scope required**: `mcp:write`
+
+**Credit formula**: `≈ N × 1 credit (enrichment per account) + M × 0 credits (firmographic updates) + 0 credits (next actions, sequence creation, enrollment)` where N = number of accounts imported, M = number needing firmographic updates. Enrichment is the primary cost driver.
+
+**Prerequisites**:
+- Account list with at minimum: company name + domain
+- At least one outreach sequence already created (or create one in the flow)
+
+**The prompt** (in a code block):
